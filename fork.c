@@ -51,6 +51,10 @@ int8_t fork_recurse(const uint32_t fork_count) {
         const uint8_t seconds = (uint8_t) WEXITSTATUS(status);
         printf("Child process finished (PID = %d), slept for %u seconds\n", child_pid, seconds);
         printf("Parent done (PID = %d)\n", parent_pid);
+        
+        // I'm assuming "Print a message that the parent is done and then end the program"
+        // means I should exit the program here and kill the other child,
+        // not just return and let the other child finish, too.
         exit(EXIT_SUCCESS);
     }
 }
